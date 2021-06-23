@@ -55,9 +55,11 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "prop-types": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "semantic-ui-react": "^2.0.3"
   },
   "version": "1.0.0",
   "main": "index.js",
