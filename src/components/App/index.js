@@ -1,10 +1,10 @@
 // == Import npm
 import React, { useState } from 'react';
 import { Loader, Dimmer } from 'semantic-ui-react';
-
+import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
 import SearchBar from 'src/components/SearchBar';
-// import MedeoResult from 'src/components/MedeoResult';
+import MedeoResult from 'src/components/MedeoResult';
 
 import './app.scss';
 import axios from 'axios';
@@ -25,16 +25,32 @@ const App = () => {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        // on masque le loader
+        setLoading(false);
       });
   };
 
   return (
     <div className="app">
-      <SearchBar
-        searchValue={search}
-        setSearchValue={setSearch}
-        handleSubmit={loadMedeo}
-      />
+      <Route
+        path="/"
+        exact
+      >
+        <SearchBar
+          searchValue={search}
+          setSearchValue={setSearch}
+          handleSubmit={loadMedeo}
+        />
+      </Route>
+      {loading && <Redirect to={`/medeo/${search}`} />}
+      <Route
+        path="/medeo/:slug"
+      >
+        <MedeoResult medeo={medeo} search={search} />
+      </Route>
+
       {loading && (
       <Dimmer active>
         <Loader size="large" />
