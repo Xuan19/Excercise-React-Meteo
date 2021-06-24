@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import './medeoResult.scss';
 
 const MedeoResult = ({ medeo, city }) => (
-  <div className="temp">
-    <h1>{city}</h1>
-    {medeo}
+  <div className="medeo">
+    <div className="city">{city}</div>
+    <div className="medeo-temp">{Math.round(medeo).toFixed(2) }°C</div>
   </div>
 );
 

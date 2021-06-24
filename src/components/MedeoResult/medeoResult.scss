@@ -1,7 +1,15 @@
-.temp{
-    background-color: yellow;
+.medeo{
+    margin: 3rem 2rem;
 
-    &--cold {
-        background-color: blue;
+    .city{
+        font-size: 3rem;
+        margin: 2rem;
     }
+
+    .medeo-temp{
+        font-size: 3rem;
+        margin: 2rem;
+        color: #1E90FF;
+    }
+
 }
