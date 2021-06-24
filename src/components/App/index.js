@@ -1,10 +1,14 @@
 // == Import npm
 import React, { useState } from 'react';
 import { Loader, Dimmer } from 'semantic-ui-react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import {
+  Route, Switch, Redirect, Link,
+} from 'react-router-dom';
 // == Import
+import logo from 'src/assets/images/weather3.png';
 import SearchBar from 'src/components/SearchBar';
 import MedeoResult from 'src/components/MedeoResult';
+import classNames from 'classnames';
 
 import './app.scss';
 import axios from 'axios';
@@ -12,8 +16,11 @@ import axios from 'axios';
 // == Composant
 const App = () => {
   const [search, setSearch] = useState('');
-  const [medeo, setMedeo] = useState('');
+  const [medeo, setMedeo] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [city, setCity] = useState('');
+
+  const cssClass = classNames('app', { 'app--warm': medeo > 15 });
 
   const loadMedeo = () => {
     setLoading(true);
@@ -21,7 +28,8 @@ const App = () => {
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=98b7465353d383f3d0f3bc4a284a48ae`)
       .then((response) => {
         console.log(response.data.main.temp);
-        setMedeo(response.data.main.temp);
+        setMedeo(response.data.main.temp - 273.15);
+        setCity(response.data.name);
       })
       .catch((error) => {
         console.log(error);
@@ -33,7 +41,10 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <div className={cssClass}>
+      <header className="logo">
+        <Link to="/"><img className="logo-img" src={logo} alt="" /></Link>
+      </header>
       <Route
         path="/"
         exact
@@ -48,12 +59,12 @@ const App = () => {
       <Route
         path="/medeo/:slug"
       >
-        <MedeoResult medeo={medeo} search={search} />
+        <MedeoResult medeo={medeo} city={city}/>
       </Route>
 
       {loading && (
       <Dimmer active>
-        <Loader size="large" />
+        <Loader size="small" />
       </Dimmer>
       )}
     </div>

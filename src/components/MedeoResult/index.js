@@ -1,24 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { useParams } from 'react-router-dom';
+// import classNames from 'classnames';
+// import { Card, Image } from 'semantic-ui-react';
+import './medeoResult.scss';
 
-const MedeoResults = ({ medeo, search }) => {
-
-  // const { slug } = useParams();
-  return(
-  <div>
-    {search}
-    {medeo-273,15}
+const MedeoResult = ({ medeo, city }) => (
+  <div className="temp">
+    <h1>{city}</h1>
+    {medeo}
   </div>
 );
+
+MedeoResult.propTypes = {
+  medeo: PropTypes.number.isRequired,
+  city: PropTypes.string.isRequired,
 };
 
-// ReposResults.propTypes = {
-//   repos: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//     }).isRequired,
-//   ).isRequired,
-// };
-
-export default MedeoResults;
+export default MedeoResult;

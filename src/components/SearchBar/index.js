@@ -8,7 +8,6 @@ const SearchBar = ({ searchValue, setSearchValue, handleSubmit }) => {
     handleSubmit();
   };
 
-  // https://reactjs.org/docs/hooks-reference.html#useref
   // une référence permet de repérer un élément du DOM et d'y accéder proprement
   // utiliser la prop spéciale ref sur l'élément
   const refInput = useRef(null);
@@ -16,14 +15,7 @@ const SearchBar = ({ searchValue, setSearchValue, handleSubmit }) => {
   // objectif : je veux placer le focus sur l'input après le premier affichage
   // de la page
   useEffect(() => {
-    // console.log('on va placer le focus sur l\'input');
-    // console.log(refInput.current);
-
     // fonction focus() à appliquer sur l'élément du DOM
-    // on pourrait récupérer l'input avec getElementById... mais pas bien, on
-    // court-circuiterait le DOM virtuel de React => utiliser une référence
-    // une_reference.current permet d'accéder à l'élément référencé (valable
-    // seulement après le premier rendu du composant)
     refInput.current.focus();
   }, []);
 
@@ -34,11 +26,10 @@ const SearchBar = ({ searchValue, setSearchValue, handleSubmit }) => {
           <Input
             ref={refInput}
             icon="search"
-            placeholder="Rechercher..."
+            placeholder="Tapez une ville"
             iconPosition="left"
             value={searchValue}
             onChange={(event) => {
-              // console.log(event.target.value);
               setSearchValue(event.target.value);
             }}
           />

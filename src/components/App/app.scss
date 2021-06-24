@@ -6,4 +6,16 @@
   padding: 1rem;
   min-height: 100vh;
 
+  .logo {
+    text-align: center;
+
+    .logo-img {
+      width: 50%;
+    }
+  }
+
+  &--warm {
+    background-color:#ffffe0;
+}
+
 }
