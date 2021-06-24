@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { Loader, Dimmer } from 'semantic-ui-react';
 import {
-  Route, Switch, Redirect, Link,
+  Route, Redirect, Link,
 } from 'react-router-dom';
 // == Import
 import logo from 'src/assets/images/weather3.png';
 import SearchBar from 'src/components/SearchBar';
-import MedeoResult from 'src/components/MedeoResult';
+import MeteoResult from 'src/components/meteoResult';
 import classNames from 'classnames';
 import slugifySearch from 'src/utils';
 
@@ -18,19 +18,19 @@ import axios from 'axios';
 // == Composant
 const App = () => {
   const [search, setSearch] = useState('');
-  const [medeo, setMedeo] = useState(null);
+  const [meteo, setMeteo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [city, setCity] = useState('');
 
-  const cssClass = classNames('app', { 'app--warm': medeo > 15 });
+  const cssClass = classNames('app', { 'app--warm': meteo > 15 });
 
-  const loadMedeo = () => {
+  const loadmeteo = () => {
     setLoading(true);
 
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=98b7465353d383f3d0f3bc4a284a48ae`)
       .then((response) => {
-        console.log(response.data.main.temp);
-        setMedeo(response.data.main.temp - 273.15);
+        //console.log(response.data.main.temp);
+        setMeteo(response.data.main.temp - 273.15);
         setCity(response.data.name);
       })
       .catch((error) => {
@@ -54,14 +54,14 @@ const App = () => {
         <SearchBar
           searchValue={search}
           setSearchValue={setSearch}
-          handleSubmit={loadMedeo}
+          handleSubmit={loadmeteo}
         />
       </Route>
-      {loading && <Redirect to={`/medeo/${slugifySearch(search)}`} />}
+      {loading && <Redirect to={`/meteo/${slugifySearch(search)}`} />}
       <Route
-        path="/medeo/:slug"
+        path="/meteo/:slug"
       >
-        <MedeoResult medeo={medeo} city={city}/>
+        <MeteoResult meteo={meteo} city={city}/>
       </Route>
 
       {loading && (
