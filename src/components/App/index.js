@@ -9,6 +9,8 @@ import logo from 'src/assets/images/weather3.png';
 import SearchBar from 'src/components/SearchBar';
 import MedeoResult from 'src/components/MedeoResult';
 import classNames from 'classnames';
+import slugifySearch from 'src/utils';
+
 
 import './app.scss';
 import axios from 'axios';
@@ -55,7 +57,7 @@ const App = () => {
           handleSubmit={loadMedeo}
         />
       </Route>
-      {loading && <Redirect to={`/medeo/${search}`} />}
+      {loading && <Redirect to={`/medeo/${slugifySearch(search)}`} />}
       <Route
         path="/medeo/:slug"
       >

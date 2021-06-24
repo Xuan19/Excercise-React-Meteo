@@ -61,7 +61,8 @@
     "react": "*",
     "react-dom": "*",
     "react-router-dom": "^5.2.0",
-    "semantic-ui-react": "^2.0.3"
+    "semantic-ui-react": "^2.0.3",
+    "slugify": "^1.5.3"
   },
   "version": "1.0.0",
   "main": "index.js",
