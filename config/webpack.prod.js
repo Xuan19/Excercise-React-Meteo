@@ -26,10 +26,10 @@ module.exports = merge(common, {
       {
         test: /\.(s?css)$/,
         use: [
-          // {
-          //   loader: MiniCssExtractPlugin.loader,
-          //   options: { publicPath: '../' },
-          // },
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: '../' },
+          },
          // 'style-loader',
           {
             loader: 'css-loader',
