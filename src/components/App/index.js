@@ -49,7 +49,7 @@ const App = () => {
       </header>
       <Route
         path="/"
-        exact
+        //exact
       >
         <SearchBar
           searchValue={search}
