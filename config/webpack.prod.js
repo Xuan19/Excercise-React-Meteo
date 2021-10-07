@@ -30,7 +30,7 @@ module.exports = merge(common, {
           //   loader: MiniCssExtractPlugin.loader,
           //   options: { publicPath: '../' },
           // },
-          'style-loader',
+         // 'style-loader',
           {
             loader: 'css-loader',
             options: { importLoaders: 3 },
