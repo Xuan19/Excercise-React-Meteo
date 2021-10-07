@@ -11,7 +11,7 @@ module.exports = merge(common, {
   devtool: false,
   output: {
     path: paths.build,
-    publicPath: './',
+    publicPath: '/',
     filename: 'js/[name].[contenthash].js',
   },
   plugins: [
@@ -30,7 +30,6 @@ module.exports = merge(common, {
             loader: MiniCssExtractPlugin.loader,
             options: { publicPath: '../' },
           },
-         // 'style-loader',
           {
             loader: 'css-loader',
             options: { importLoaders: 3 },
