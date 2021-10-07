@@ -1,5 +1,5 @@
 {
-  "homepage": "http://Xuan19.github.io/exercice_meteo",
+  "homepage": "http://Xuan19.github.io/exercice_meteo/",
   "name": "Exercice_meteo",
   "scripts": {
     "deploy":"gh-pages -d dist",
