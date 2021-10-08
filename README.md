@@ -8,6 +8,6 @@ le but de cet exercie est de faire une mini app en react, de deux pages. L'app p
 L'API à utiliser pour connaître la température sera https://openweathermap.org/.
 
 ### Resultat : 
-https://xuan19.github.io/exercice_meteo/
+https://xuan19.github.io/Excercise-React-Meteo/
 
 
