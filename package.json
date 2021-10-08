@@ -1,6 +1,6 @@
 {
-  "homepage": "http://Xuan19.github.io/meteo/",
-  "name": "meteo",
+  "homepage": "https://xuan19.github.io/Excercise-React-Meteo/",
+  "name": "Eexcercise-React-Meteo",
   "scripts": {
     "deploy":"gh-pages -d dist",
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
